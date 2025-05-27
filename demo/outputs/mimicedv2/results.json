@@ -1,0 +1,244 @@
+[
+  {
+    "file": "donnas_datasets/mimicedv2/pyxis.csv",
+    "columns": [
+      {
+        "column_name": "subject_id",
+        "predicted_type": "description"
+      },
+      {
+        "column_name": "stay_id",
+        "predicted_type": "position"
+      },
+      {
+        "column_name": "charttime",
+        "predicted_type": "result"
+      },
+      {
+        "column_name": "med_rn",
+        "predicted_type": "region"
+      },
+      {
+        "column_name": "name",
+        "predicted_type": "command"
+      },
+      {
+        "column_name": "gsn_rn",
+        "predicted_type": "day"
+      },
+      {
+        "column_name": "gsn",
+        "predicted_type": "location"
+      }
+    ]
+  },
+  {
+    "file": "donnas_datasets/mimicedv2/vitalsign.csv",
+    "columns": [
+      {
+        "column_name": "subject_id",
+        "predicted_type": "name"
+      },
+      {
+        "column_name": "stay_id",
+        "predicted_type": "position"
+      },
+      {
+        "column_name": "charttime",
+        "predicted_type": "result"
+      },
+      {
+        "column_name": "temperature",
+        "predicted_type": "rank"
+      },
+      {
+        "column_name": "heartrate",
+        "predicted_type": "age"
+      },
+      {
+        "column_name": "resprate",
+        "predicted_type": "rank"
+      },
+      {
+        "column_name": "o2sat",
+        "predicted_type": "category"
+      },
+      {
+        "column_name": "sbp",
+        "predicted_type": "code"
+      },
+      {
+        "column_name": "dbp",
+        "predicted_type": "rank"
+      },
+      {
+        "column_name": "rhythm",
+        "predicted_type": "language"
+      },
+      {
+        "column_name": "pain",
+        "predicted_type": "plays"
+      }
+    ]
+  },
+  {
+    "file": "donnas_datasets/mimicedv2/medrecon.csv",
+    "columns": [
+      {
+        "column_name": "subject_id",
+        "predicted_type": "name"
+      },
+      {
+        "column_name": "stay_id",
+        "predicted_type": "position"
+      },
+      {
+        "column_name": "charttime",
+        "predicted_type": "result"
+      },
+      {
+        "column_name": "name",
+        "predicted_type": "name"
+      },
+      {
+        "column_name": "gsn",
+        "predicted_type": "position"
+      },
+      {
+        "column_name": "ndc",
+        "predicted_type": "description"
+      },
+      {
+        "column_name": "etc_rn",
+        "predicted_type": "day"
+      },
+      {
+        "column_name": "etccode",
+        "predicted_type": "rank"
+      },
+      {
+        "column_name": "etcdescription",
+        "predicted_type": "name"
+      }
+    ]
+  },
+  {
+    "file": "donnas_datasets/mimicedv2/triage.csv",
+    "columns": [
+      {
+        "column_name": "subject_id",
+        "predicted_type": "address"
+      },
+      {
+        "column_name": "stay_id",
+        "predicted_type": "rank"
+      },
+      {
+        "column_name": "temperature",
+        "predicted_type": "rank"
+      },
+      {
+        "column_name": "heartrate",
+        "predicted_type": "age"
+      },
+      {
+        "column_name": "resprate",
+        "predicted_type": "age"
+      },
+      {
+        "column_name": "o2sat",
+        "predicted_type": "rank"
+      },
+      {
+        "column_name": "sbp",
+        "predicted_type": "rank"
+      },
+      {
+        "column_name": "dbp",
+        "predicted_type": "age"
+      },
+      {
+        "column_name": "pain",
+        "predicted_type": "location"
+      },
+      {
+        "column_name": "acuity",
+        "predicted_type": "rank"
+      },
+      {
+        "column_name": "chiefcomplaint",
+        "predicted_type": "name"
+      }
+    ]
+  },
+  {
+    "file": "donnas_datasets/mimicedv2/edstays.csv",
+    "columns": [
+      {
+        "column_name": "subject_id",
+        "predicted_type": "director"
+      },
+      {
+        "column_name": "hadm_id",
+        "predicted_type": "rank"
+      },
+      {
+        "column_name": "stay_id",
+        "predicted_type": "rank"
+      },
+      {
+        "column_name": "intime",
+        "predicted_type": "result"
+      },
+      {
+        "column_name": "outtime",
+        "predicted_type": "result"
+      },
+      {
+        "column_name": "gender",
+        "predicted_type": "sex"
+      },
+      {
+        "column_name": "race",
+        "predicted_type": "category"
+      },
+      {
+        "column_name": "arrival_transport",
+        "predicted_type": "city"
+      },
+      {
+        "column_name": "disposition",
+        "predicted_type": "state"
+      }
+    ]
+  },
+  {
+    "file": "donnas_datasets/mimicedv2/diagnosis.csv",
+    "columns": [
+      {
+        "column_name": "subject_id",
+        "predicted_type": "name"
+      },
+      {
+        "column_name": "stay_id",
+        "predicted_type": "position"
+      },
+      {
+        "column_name": "seq_num",
+        "predicted_type": "brand"
+      },
+      {
+        "column_name": "icd_code",
+        "predicted_type": "type"
+      },
+      {
+        "column_name": "icd_version",
+        "predicted_type": "rank"
+      },
+      {
+        "column_name": "icd_title",
+        "predicted_type": "name"
+      }
+    ]
+  }
+]

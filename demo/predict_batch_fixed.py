@@ -1,4 +1,6 @@
 
+### issue with this one: It has afixed max column value. otherwise it works perfectly fine.
+
 import os
 import torch
 import argparse
@@ -6,13 +8,17 @@ import pandas as pd
 import numpy as np
 from os.path import join
 from sklearn.preprocessing import LabelEncoder
+import warnings
+
+
+warnings.filterwarnings("ignore", category=FutureWarning)
 
 # -------------------------
 # Environment Configuration
 # -------------------------
 os.environ.setdefault('LDA_name', 'num-directstr_thr-0_tn-400')
-os.environ.setdefault('TYPENAME', 'sato')  # fallback
-os.environ.setdefault('BASEPATH', './')    # fallback
+os.environ.setdefault('TYPENAME', 'sato')
+os.environ.setdefault('BASEPATH', './')
 
 # -------------------------
 # SATO Imports
@@ -26,9 +32,9 @@ from model.torchcrf import CRF
 # -------------------------
 # Constants
 # -------------------------
-MAX_COL_COUNT = 6
+MAX_COL_COUNT = 50
 topic_dim = 400
-device = 'cpu'  # or 'cuda' if available
+device = 'cpu'
 
 # -------------------------
 # Type and Label Setup
@@ -79,7 +85,6 @@ def extract(df):
     feature_dic = {}
     n = df.shape[1]
 
-    # -- topic features (with exception fallback) --
     try:
         topic_features = extract_topic_features(df_dic)
         if topic_features is None:
@@ -93,7 +98,6 @@ def extract(df):
         np.vstack((np.tile(topic_vec, (n, 1)), np.zeros((MAX_COL_COUNT - n, topic_dim))))
     )
 
-    # -- sherlock features --
     sherlock_features = extract_sherlock_features(df_dic)
     for f_g in feature_group_cols:
         temp = sherlock_features[feature_group_cols[f_g]].to_numpy()
@@ -115,43 +119,77 @@ def predict_table(df):
     return list(df.columns), predicted_types
 
 # -------------------------
+# Read CSV with Encoding Fallback
+# -------------------------
+def safe_read_csv(path):
+    try:
+        return pd.read_csv(path)
+    except UnicodeDecodeError:
+        return pd.read_csv(path, encoding="latin1")
+
+# -------------------------
 # Main Entry Point
 # -------------------------
 def main():
-    parser = argparse.ArgumentParser(description="Run SATO predictions on a CSV table.")
-    parser.add_argument("--csv_file", type=str, required=True, help="Path to input CSV file.")
+    parser = argparse.ArgumentParser(description="Run SATO predictions on one CSV file or a folder of CSVs.")
+    parser.add_argument("--csv_file", type=str, help="Path to input CSV file.")
+    parser.add_argument("--csv_folder", type=str, help="Path to a folder containing multiple CSV files.")
     parser.add_argument("--output_json", type=str, default=None, help="Optional path to write output JSON.")
     args = parser.parse_args()
 
-    if not os.path.exists(args.csv_file):
-        print(f"Error: File '{args.csv_file}' not found.")
+    all_results = []
+
+    if args.csv_file:
+        if not os.path.exists(args.csv_file):
+            print(f"Error: File '{args.csv_file}' not found.")
+            return
+        try:
+            df = safe_read_csv(args.csv_file)
+            df.to_csv("temp_table.tsv", sep='\t', index=False)
+            print(f"Converted {args.csv_file} to TSV (temp_table.tsv)")
+            col_names, predictions = predict_table(df)
+            all_results.append((args.csv_file, col_names, predictions))
+        except Exception as e:
+            print(f"[ERROR] Failed to process {args.csv_file}: {e}")
+            return
+
+    elif args.csv_folder:
+        if not os.path.isdir(args.csv_folder):
+            print(f"Error: Folder '{args.csv_folder}' not found.")
+            return
+        for file_name in os.listdir(args.csv_folder):
+            if file_name.endswith(".csv"):
+                file_path = os.path.join(args.csv_folder, file_name)
+                try:
+                    df_multi = safe_read_csv(file_path)
+                    if df_multi.empty or df_multi.shape[1] == 0:
+                        print(f"[SKIPPED] {file_path} is empty or has no columns.")
+                        continue
+                    df_multi.to_csv("temp_table.tsv", sep='\t', index=False)
+                    print(f"Converted {file_path} to TSV (temp_table.tsv)")
+                    col_names, predictions = predict_table(df_multi)
+                    all_results.append((file_path, col_names, predictions))
+                except Exception as e:
+                    print(f"[ERROR] Failed to process {file_path}: {e}")
+    else:
+        print("Error: Provide either --csv_file or --csv_folder")
         return
 
-    # Load CSV
-    try:
-        df = pd.read_csv(args.csv_file)
-    except Exception as e:
-        print(f"Error reading CSV: {e}")
-        return
+    for table_path, col_names, predictions in all_results:
+        print(f"\nPredicted Semantic Types for: {table_path}")
+        for col, typ in zip(col_names, predictions):
+            print(f"  {col}: {typ}")
 
-    # Convert to TSV temporarily
-    df.to_csv("temp_table.tsv", sep='\t', index=False)
-    print(f"Converted {args.csv_file} to TSV (temp_table.tsv)")
-
-    # Run prediction
-    col_names, predictions = predict_table(df)
-
-    # Print Results
-    print("\nPredicted Semantic Types:")
-    for col, typ in zip(col_names, predictions):
-        print(f"  {col}: {typ}")
-
-    # Optionally save as JSON
     if args.output_json:
         import json
-        out = [{"column_name": col, "predicted_type": typ} for col, typ in zip(col_names, predictions)]
+        export_data = []
+        for table_path, col_names, predictions in all_results:
+            export_data.append({
+                "file": table_path,
+                "columns": [{"column_name": col, "predicted_type": typ} for col, typ in zip(col_names, predictions)]
+            })
         with open(args.output_json, "w") as f:
-            json.dump(out, f, indent=2)
+            json.dump(export_data, f, indent=2)
         print(f"\nSaved predictions to: {args.output_json}")
 
 if __name__ == "__main__":

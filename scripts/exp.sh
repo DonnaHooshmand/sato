@@ -1,4 +1,5 @@
 # feature importance
+PYTORCH_NO_SHARED_MEMORY=True 
 python feature_importance.py  --model_type=single --model_path=sherlock_None.pt
 python feature_importance.py  --model_type=single --model_path=all_None.pt --topic=num-directstr_thr-0_tn-400
 

@@ -1,0 +1,310 @@
+[
+  {
+    "file": "donnas_datasets/school_shooting/shooter.csv",
+    "columns": [
+      {
+        "column_name": "Incident_ID",
+        "predicted_type": "name"
+      },
+      {
+        "column_name": "Age",
+        "predicted_type": "type"
+      },
+      {
+        "column_name": "Gender",
+        "predicted_type": "gender"
+      },
+      {
+        "column_name": "Race",
+        "predicted_type": "location"
+      },
+      {
+        "column_name": "School_Affiliation",
+        "predicted_type": "command"
+      },
+      {
+        "column_name": "Shooter_Outcome",
+        "predicted_type": "location"
+      },
+      {
+        "column_name": "Shooter_Died",
+        "predicted_type": "status"
+      },
+      {
+        "column_name": "Injury",
+        "predicted_type": "status"
+      }
+    ]
+  },
+  {
+    "file": "donnas_datasets/school_shooting/weapon.csv",
+    "columns": [
+      {
+        "column_name": "Incident_ID",
+        "predicted_type": "category"
+      },
+      {
+        "column_name": "Weapon_Type",
+        "predicted_type": "category"
+      },
+      {
+        "column_name": "Weapon_Caliber",
+        "predicted_type": "location"
+      },
+      {
+        "column_name": "Weapon_Details",
+        "predicted_type": "name"
+      }
+    ]
+  },
+  {
+    "file": "donnas_datasets/school_shooting/incident.csv",
+    "columns": [
+      {
+        "column_name": "Incident_ID",
+        "predicted_type": "name"
+      },
+      {
+        "column_name": "Month",
+        "predicted_type": "manufacturer"
+      },
+      {
+        "column_name": "Day",
+        "predicted_type": "category"
+      },
+      {
+        "column_name": "Year",
+        "predicted_type": "description"
+      },
+      {
+        "column_name": "Date",
+        "predicted_type": "birthPlace"
+      },
+      {
+        "column_name": "School",
+        "predicted_type": "name"
+      },
+      {
+        "column_name": "Victims_Killed",
+        "predicted_type": "industry"
+      },
+      {
+        "column_name": "Victims_Wounded",
+        "predicted_type": "region"
+      },
+      {
+        "column_name": "Number_Victims",
+        "predicted_type": "result"
+      },
+      {
+        "column_name": "Shooter_Killed",
+        "predicted_type": "family"
+      },
+      {
+        "column_name": "Source",
+        "predicted_type": "birthPlace"
+      },
+      {
+        "column_name": "Number_News",
+        "predicted_type": "category"
+      },
+      {
+        "column_name": "Media_Attention",
+        "predicted_type": "type"
+      },
+      {
+        "column_name": "Reliability",
+        "predicted_type": "product"
+      },
+      {
+        "column_name": "Quarter",
+        "predicted_type": "category"
+      },
+      {
+        "column_name": "City",
+        "predicted_type": "name"
+      },
+      {
+        "column_name": "State",
+        "predicted_type": "state"
+      },
+      {
+        "column_name": "School_Level",
+        "predicted_type": "team"
+      },
+      {
+        "column_name": "Location",
+        "predicted_type": "type"
+      },
+      {
+        "column_name": "Location_Type",
+        "predicted_type": "location"
+      },
+      {
+        "column_name": "During_Classes",
+        "predicted_type": "category"
+      },
+      {
+        "column_name": "Time_Period",
+        "predicted_type": "category"
+      },
+      {
+        "column_name": "First_Shot",
+        "predicted_type": "location"
+      },
+      {
+        "column_name": "Duration_min",
+        "predicted_type": "rank"
+      },
+      {
+        "column_name": "Summary",
+        "predicted_type": "result"
+      },
+      {
+        "column_name": "Narrative",
+        "predicted_type": "description"
+      },
+      {
+        "column_name": "Situation",
+        "predicted_type": "command"
+      },
+      {
+        "column_name": "GV_Type",
+        "predicted_type": "location"
+      },
+      {
+        "column_name": "Involves_Students_Staff",
+        "predicted_type": "category"
+      },
+      {
+        "column_name": "Targets",
+        "predicted_type": "team"
+      },
+      {
+        "column_name": "Accomplice",
+        "predicted_type": "category"
+      },
+      {
+        "column_name": "Accomplice_Narrative",
+        "predicted_type": "name"
+      },
+      {
+        "column_name": "Hostages",
+        "predicted_type": "status"
+      },
+      {
+        "column_name": "Barricade",
+        "predicted_type": "status"
+      },
+      {
+        "column_name": "Officer_Involved",
+        "predicted_type": "status"
+      },
+      {
+        "column_name": "Bullied",
+        "predicted_type": "location"
+      },
+      {
+        "column_name": "Domestic_Violence",
+        "predicted_type": "status"
+      },
+      {
+        "column_name": "Gang_Related",
+        "predicted_type": "category"
+      },
+      {
+        "column_name": "Active_Shooter_FBI",
+        "predicted_type": "category"
+      },
+      {
+        "column_name": "Multiple_Location",
+        "predicted_type": "location"
+      },
+      {
+        "column_name": "Preplanned",
+        "predicted_type": "status"
+      },
+      {
+        "column_name": "SRO_School",
+        "predicted_type": "team"
+      },
+      {
+        "column_name": "Security_Screening",
+        "predicted_type": "result"
+      },
+      {
+        "column_name": "Screening_Outcome",
+        "predicted_type": "category"
+      },
+      {
+        "column_name": "Shots_Fired",
+        "predicted_type": "service"
+      },
+      {
+        "column_name": "School_Lockdown",
+        "predicted_type": "team"
+      },
+      {
+        "column_name": "LAT",
+        "predicted_type": "description"
+      },
+      {
+        "column_name": "LNG",
+        "predicted_type": "requirement"
+      },
+      {
+        "column_name": "Campus_Type",
+        "predicted_type": "name"
+      },
+      {
+        "column_name": "Unnamed: 49",
+        "predicted_type": "language"
+      },
+      {
+        "column_name": "Unnamed: 50",
+        "predicted_type": "language"
+      },
+      {
+        "column_name": "Unnamed: 51",
+        "predicted_type": "language"
+      },
+      {
+        "column_name": "Unnamed: 52",
+        "predicted_type": "language"
+      },
+      {
+        "column_name": "Unnamed: 53",
+        "predicted_type": "language"
+      }
+    ]
+  },
+  {
+    "file": "donnas_datasets/school_shooting/victim.csv",
+    "columns": [
+      {
+        "column_name": "Incident_ID",
+        "predicted_type": "name"
+      },
+      {
+        "column_name": "Injury",
+        "predicted_type": "status"
+      },
+      {
+        "column_name": "Gender",
+        "predicted_type": "category"
+      },
+      {
+        "column_name": "School_Affiliation",
+        "predicted_type": "category"
+      },
+      {
+        "column_name": "Age",
+        "predicted_type": "rank"
+      },
+      {
+        "column_name": "Race",
+        "predicted_type": "county"
+      }
+    ]
+  }
+]
